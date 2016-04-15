@@ -1,0 +1,7 @@
+helloworld:
+  build: .
+  dockerfile: Dockerfile.dev
+  ports:
+    - "80:80"
+  volumes:
+    - .:/parti/helloworld

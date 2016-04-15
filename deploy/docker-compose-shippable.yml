@@ -1,7 +1,0 @@
-helloworld:
-  build: ..
-  dockerfile: deploy/Dockerfile.dev
-  ports:
-    - "80:80"
-  volumes:
-    - ..:/parti/helloworld

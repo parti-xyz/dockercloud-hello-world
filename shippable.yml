@@ -9,7 +9,7 @@ before_install:
   - docker-compose -v
 
 script:
-  - DOCKER_COMPOSE_FILE=deploy/docker-compose-shippable.yml
+  - DOCKER_COMPOSE_FILE=docker-compose-shippable.yml
   - pwd
   - ls
   - docker-compose -f $DOCKER_COMPOSE_FILE run --rm helloworld pwd
