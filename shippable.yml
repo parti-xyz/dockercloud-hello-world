@@ -1,0 +1,21 @@
+language: none
+
+before_install:
+  - sudo apt-get -y update
+  - sudo apt-get -y install libpq-dev
+  - apt-get -y install python-dev
+  - sudo pip install -U docker-compose
+  - docker -v
+  - docker-compose -v
+
+script:
+  - DOCKER_COMPOSE_FILE=deploy/docker-compose-shippable.yml
+  - pwd
+  - ls
+  - docker-compose -f $DOCKER_COMPOSE_FILE run --rm helloworld pwd
+  - docker-compose -f $DOCKER_COMPOSE_FILE run --rm helloworld ls
+  - docker-compose -f $DOCKER_COMPOSE_FILE run --rm helloworld ls /parti/helloworld
+  - docker-compose -f $DOCKER_COMPOSE_FILE up -d helloworld
+  - docker ps
+  - CONTAINER=$( docker-compose -f $DOCKER_COMPOSE_FILE ps -q helloworld )
+  - docker inspect $CONTAINER
